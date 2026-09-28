@@ -10,10 +10,7 @@
 
   /* ---------- Loader ---------- */
   const loader = $('.loader');
-  const ready = () => {
-    root.classList.add('is-ready');
-    try { sessionStorage.setItem('slm-seen', '1'); } catch (e) {}
-  };
+  const ready = () => root.classList.add('is-ready');
 
   if (!loader || root.classList.contains('skip-loader')) {
     loader && loader.remove();

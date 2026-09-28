@@ -27,15 +27,15 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Unbounded:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="preload" as="image" href="img/logo.webp?v=2" type="image/webp">
   <link rel="stylesheet" href="css/style.css">
   <script>
     (function (d) {
       d.classList.replace('no-js', 'js');
-      try { if (sessionStorage.getItem('slm-seen')) d.classList.add('skip-loader'); } catch (e) {}
+      try { if (document.referrer && new URL(document.referrer).host === location.host) d.classList.add('skip-loader'); } catch (e) {}
       if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('skip-loader');
     })(document.documentElement);
   </script>
@@ -55,7 +55,18 @@
         "@type": "Plumber",
         "@id": "https://www.slminstalacije.com/#firma",
         "name": "SLM Instalacije",
+        "legalName": "SLM instalacije, obrt za vodoinstalacije, vl. Samir Đuhera",
         "alternateName": "SLM",
+        "founder": { "@type": "Person", "name": "Samir Đuhera" },
+        "foundingDate": "2025",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Bratina 241",
+          "addressLocality": "Bratina",
+          "postalCode": "10451",
+          "addressRegion": "Zagrebačka županija",
+          "addressCountry": "HR"
+        },
         "description": "Vodoinstalaterske usluge: vodovodne instalacije, odvodnja i kanalizacija, kupaonice, bojleri, priključci kuhinja i perilica te popravci curenja i kvarova.",
         "url": "https://www.slminstalacije.com/",
         "telephone": "+385992996301",
@@ -543,7 +554,7 @@
             <svg class="btn__ico"><use href="#i-msg"/></svg>
             <span>Pripremi poruku</span>
           </button>
-          <p class="quick__note">Otvorit će se vaša aplikacija za poruke s već upisanim tekstom prema broju 099 299 6301.</p>
+          <p class="quick__note">Otvorit će se vaša aplikacija za poruke s već upisanim tekstom prema broju 099 299 6301. Obrazac ništa ne sprema niti šalje nama — više u <a href="pravila-privatnosti/">Pravilima privatnosti</a>.</p>
         </form>
       </div>
     </section>
@@ -575,7 +586,16 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© <span data-year>2026</span> SLM Instalacije. Sva prava pridržana.</span>
+        <div class="footer__legal-wrap">
+          <nav class="footer__legal" aria-label="Pravne informacije">
+            <a href="impresum/">Impresum</a>
+            <a href="uvjeti-koristenja/">Uvjeti korištenja</a>
+            <a href="pravila-privatnosti/">Pravila privatnosti</a>
+            <a href="gdpr/">GDPR</a>
+          </nav>
+          <p class="footer__company">SLM instalacije, obrt za vodoinstalacije, vl. Samir Đuhera · Bratina 241, 10451 Pisarovina · MBO 98960318</p>
+          <span>© <span data-year>2026</span> SLM Instalacije. Sva prava pridržana.</span>
+        </div>
         <a href="#pocetna" class="footer__top" aria-label="Natrag na vrh"><svg><use href="#i-up"/></svg></a>
       </div>
     </div>

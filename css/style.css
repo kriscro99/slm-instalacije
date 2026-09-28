@@ -1026,3 +1026,122 @@ em { font-style: normal; }
   .water-text { background-position-y: .02em; }
   .hero__glow, .hero__bubbles { display: none; }
 }
+
+/* =========================================================
+   PRAVNE STRANICE
+   ========================================================= */
+.legal-hero {
+  position: relative; overflow: hidden; isolation: isolate;
+  color: #fff;
+  padding: calc(var(--header-h) + var(--safe-t) + clamp(34px, 7vw, 76px)) 0 calc(var(--wave-h) + clamp(30px, 5vw, 56px));
+  background:
+    radial-gradient(70% 70% at 85% 10%, rgba(22, 119, 214, .45), transparent 70%),
+    radial-gradient(50% 60% at 0% 100%, rgba(60, 198, 255, .16), transparent 70%),
+    linear-gradient(165deg, var(--navy-700) 0%, var(--navy-900) 60%, var(--navy-950) 100%);
+}
+.crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, .6); }
+.crumbs a { color: var(--aqua-300); }
+.crumbs a:hover { text-decoration: underline; }
+.legal-hero h1 {
+  font-family: var(--f-display); font-weight: 800;
+  font-size: clamp(34px, 8.6vw, 68px); line-height: 1.05; letter-spacing: -.03em;
+  margin: 16px 0 16px;
+}
+.legal-hero p { max-width: 640px; font-size: clamp(17px, 2vw, 19px); color: rgba(255, 255, 255, .75); }
+
+.legal-tabs {
+  position: relative; z-index: 2;
+  display: flex; gap: 8px;
+  max-width: 900px; margin: -34px auto 0; padding: 6px var(--gutter);
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.legal-tabs::-webkit-scrollbar { display: none; }
+@media (max-width: 699px) { .legal-tabs { flex-wrap: wrap; overflow: visible; } }
+.legal-tabs a {
+  flex: none;
+  padding: 12px 18px; border-radius: 999px;
+  background: #fff; border: 1px solid var(--line);
+  font-weight: 700; font-size: 14.5px; white-space: nowrap; color: var(--navy-900);
+  box-shadow: 0 12px 28px -18px rgba(10, 31, 56, .45);
+  transition: border-color .3s ease, background .3s ease, color .3s ease;
+}
+.legal-tabs a:hover { border-color: rgba(22, 119, 214, .4); }
+.legal-tabs a[aria-current="page"] { background: var(--navy-900); color: #fff; border-color: var(--navy-900); }
+
+.legal-wrap { padding-bottom: clamp(70px, 10vw, 120px); }
+.legal {
+  max-width: 860px; margin: 22px auto 0;
+  padding: clamp(24px, 5vw, 56px);
+  border-radius: clamp(24px, 3vw, 32px);
+  background: #fff; border: 1px solid var(--line);
+  box-shadow: 0 40px 80px -50px rgba(10, 31, 56, .45);
+}
+.legal h2 {
+  font-family: var(--f-display); font-weight: 700;
+  font-size: clamp(20px, 3.6vw, 26px); line-height: 1.25; letter-spacing: -.01em;
+  margin: 44px 0 14px; scroll-margin-top: calc(var(--header-h) + var(--safe-t) + 20px);
+}
+.legal > h2:first-child, .legal > .toc + h2, .legal > .callout + h2 { margin-top: 8px; }
+.legal > .callout + h2 { margin-top: 36px; }
+.legal h3 { font-size: 17.5px; font-weight: 800; margin: 24px 0 8px; color: var(--navy-900); }
+.legal p, .legal li { font-size: 16.5px; line-height: 1.7; color: #33475e; }
+.legal p + p { margin-top: 12px; }
+.legal a:not(.btn) { color: var(--blue-600); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; word-break: break-word; }
+.legal a:not(.btn):hover { color: var(--blue-500); }
+.legal ul { display: grid; gap: 8px; margin: 12px 0; }
+.legal ul li { position: relative; padding-left: 26px; }
+.legal ul li::before {
+  content: ""; position: absolute; left: 4px; top: .66em;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--aqua-400); box-shadow: 0 0 0 4px rgba(60, 198, 255, .16);
+}
+.legal .rights { gap: 12px; }
+.legal .rights strong { color: var(--navy-900); }
+
+.data {
+  margin: 14px 0; border-radius: 20px; overflow: hidden;
+  background: var(--paper); border: 1px solid var(--line);
+}
+.data > div { display: grid; gap: 2px; padding: 14px 18px; border-top: 1px solid var(--line); }
+.data > div:first-child { border-top: 0; }
+.data dt { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.data dd { margin: 0; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+@media (min-width: 640px) {
+  .data > div { grid-template-columns: 190px 1fr; gap: 18px; align-items: baseline; }
+}
+
+.callout {
+  margin: 0 0 8px; padding: 18px 20px 18px;
+  border-radius: 18px;
+  background: var(--aqua-100); border: 1px solid rgba(22, 119, 214, .18);
+}
+.callout strong { color: var(--navy-900); }
+.callout ul { margin-bottom: 0; }
+.legal p.callout { margin: 16px 0; color: var(--ink); }
+.callout--red { background: #fff1ef; border-color: rgba(224, 55, 44, .28); }
+
+.toc {
+  margin-bottom: 36px; padding: 20px 22px;
+  border-radius: 18px; background: var(--paper); border: 1px solid var(--line);
+}
+.toc strong { display: block; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.toc ol { list-style: decimal; padding-left: 22px; display: grid; gap: 4px; }
+@media (min-width: 640px) { .toc ol { grid-template-columns: 1fr 1fr; column-gap: 28px; } }
+.toc li { font-size: 15.5px; padding-left: 0; }
+.toc li::before { display: none; }
+.legal .toc a { text-decoration: none; font-weight: 600; color: var(--navy-900); }
+.legal .toc a:hover { color: var(--blue-600); text-decoration: underline; }
+
+.legal-meta { margin-top: 40px !important; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px !important; color: var(--muted) !important; }
+.legal-back { max-width: 860px; margin: 26px auto 0; display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 559px) { .legal-back .btn { width: 100%; } }
+
+/* Pravne poveznice u podnožju */
+.footer__legal-wrap { display: grid; gap: 10px; }
+.footer__legal { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.footer__legal a { font-weight: 600; font-size: 14px; opacity: .85; transition: color .3s ease, opacity .3s ease; }
+.footer__legal a:hover { color: var(--aqua-300); opacity: 1; }
+.footer__company { font-size: 13px; line-height: 1.6; opacity: .65; }
+.footer__bottom { align-items: flex-end; opacity: 1; }
+.footer__legal-wrap > span { opacity: .6; }
+.quick__note a { color: var(--blue-600); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
