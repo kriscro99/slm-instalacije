@@ -343,13 +343,22 @@ em { font-style: normal; }
   margin: 20px 0 18px;
 }
 .section-head h2 em, .contact h2 em, .urgent h2 em, .why__quote em {
-  background: linear-gradient(100deg, var(--blue-600), var(--aqua-400) 60%, var(--blue-500));
+  --grad: linear-gradient(100deg, var(--blue-600), var(--aqua-400) 60%, var(--blue-500));
+  background-image: var(--grad);
   -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+/* Safari ne iscrtava gradijent roditelja kroz riječi koje se animiraju (transform),
+   pa nakon dijeljenja na riječi gradijent dobiva svaka riječ zasebno */
+.is-split em { background-image: none; }
+.is-split em .w > span {
+  background-image: var(--grad);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
 }
 .section-head p { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 600px; }
 .section-head--light .kicker { color: var(--aqua-300); background: rgba(60, 198, 255, .1); border-color: rgba(60, 198, 255, .22); }
 .section-head--light h2 { color: #fff; }
-.section-head--light h2 em { background-image: linear-gradient(100deg, var(--aqua-300), var(--aqua-400) 60%, #fff); }
+.section-head--light h2 em { --grad: linear-gradient(100deg, var(--aqua-300), var(--aqua-400) 60%, #fff); }
 .section-head--light p { color: rgba(255, 255, 255, .72); }
 
 /* ---------- Reveal ---------- */
@@ -804,7 +813,7 @@ em { font-style: normal; }
 .pulse::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--red-400); animation: ping 1.6s var(--ease-out) infinite; }
 .urgent__head { max-width: 680px; margin-bottom: clamp(30px, 5vw, 56px); }
 .urgent__head p { color: rgba(255, 255, 255, .75); font-size: clamp(17px, 2vw, 19px); }
-.urgent h2 em { background-image: linear-gradient(100deg, var(--aqua-300), #fff); }
+.urgent h2 em { --grad: linear-gradient(100deg, var(--aqua-300), #fff); }
 .tips { display: grid; gap: 14px; counter-reset: tip; }
 @media (min-width: 640px) { .tips { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1100px) { .tips { grid-template-columns: repeat(4, 1fr); } }

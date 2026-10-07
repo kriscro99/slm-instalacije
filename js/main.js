@@ -56,6 +56,7 @@
       });
     };
     walk(el);
+    el.classList.add('is-split');
   });
 
   /* ---------- Reveal ---------- */
