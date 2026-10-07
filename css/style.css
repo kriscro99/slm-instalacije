@@ -1145,3 +1145,10 @@ em { font-style: normal; }
 .footer__bottom { align-items: flex-end; opacity: 1; }
 .footer__legal-wrap > span { opacity: .6; }
 .quick__note a { color: var(--blue-600); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* E-pošta u kontaktu i podnožju */
+.mini-btn--wide { grid-column: 1 / -1; }
+.mini-btn--wide span { overflow-wrap: anywhere; }
+.footer__contact .footer__contact-sub { margin-top: 16px; }
+.footer__contact a.footer__mail { font-family: var(--f-body); font-size: 17px; font-weight: 700; color: #fff; overflow-wrap: anywhere; transition: color .3s ease; }
+.footer__contact a.footer__mail:hover { color: var(--aqua-300); }
