@@ -91,6 +91,10 @@
     <symbol id="i-drop" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5c-.3 0-.6.15-.8.4C9.4 5.2 5 11 5 14.8A7 7 0 0 0 19 14.8C19 11 14.6 5.2 12.8 2.9a1 1 0 0 0-.8-.4z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 6 8-6"/></g></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20M10.5 8v5M8 10.5h5"/></g></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-chev-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-chev-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
     <symbol id="i-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M6 11l6-6 6 6"/></symbol>
   </svg>
 
@@ -119,6 +123,7 @@
         <a href="#usluge">Usluge</a>
         <a href="#kako-radimo">Kako radimo</a>
         <a href="#zasto-mi">Zašto mi</a>
+        <a href="#radovi">Radovi</a>
         <a href="#hitno">Hitno?</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
@@ -141,10 +146,11 @@
       <a href="#usluge" style="--i:0"><small>01</small>Usluge</a>
       <a href="#kako-radimo" style="--i:1"><small>02</small>Kako radimo</a>
       <a href="#zasto-mi" style="--i:2"><small>03</small>Zašto mi</a>
-      <a href="#hitno" style="--i:3"><small>04</small>Hitno?</a>
-      <a href="#kontakt" style="--i:4"><small>05</small>Kontakt</a>
+      <a href="#radovi" style="--i:3"><small>04</small>Radovi</a>
+      <a href="#hitno" style="--i:4"><small>05</small>Hitno?</a>
+      <a href="#kontakt" style="--i:5"><small>06</small>Kontakt</a>
     </nav>
-    <div class="menu__foot" style="--i:5">
+    <div class="menu__foot" style="--i:6">
       <span>Nazovite nas</span>
       <a href="tel:+385992996301">099 299 6301</a>
     </div>
@@ -444,6 +450,72 @@
       </div>
     </section>
 
+    <!-- NAŠI RADOVI -->
+    <section class="works section" id="radovi">
+      <svg class="works__wave works__wave--top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c120-30 240-40 360-24s240 50 360 50 240-40 360-46 240 18 360 34v36H0z"/></svg>
+      <div class="works__bg" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-head section-head--light">
+          <span class="kicker reveal"><svg><use href="#i-drop"/></svg>Naši radovi</span>
+          <h2 class="reveal" data-split>Posao koji <em>govori sam za sebe.</em></h2>
+          <p class="reveal" style="--d:2">Dio radova koje smo izveli — od kupaonica do sustava za omekšavanje i pročišćavanje vode. Pritisnite fotografiju za veći prikaz.</p>
+        </header>
+
+        <ul class="works__grid">
+          <li class="shot reveal" style="--d:0">
+            <button class="shot__btn" type="button" data-full="img/radovi/kupaonica-tus-kabina-1600.webp" data-title="Uređena kupaonica" data-desc="Kompletna vodoinstalaterska izvedba kupaonice: tuš kabina s kliznim staklom, umivaonik s ormarićem, WC i bojler.">
+              <img src="img/radovi/kupaonica-tus-kabina-640.webp" srcset="img/radovi/kupaonica-tus-kabina-640.webp 640w, img/radovi/kupaonica-tus-kabina-1600.webp 1200w" sizes="(min-width: 1000px) 25vw, 50vw" width="640" height="853" alt="Uređena kupaonica s tuš kabinom, umivaonikom s ormarićem i WC školjkom" loading="lazy" decoding="async">
+              <span class="shot__cap"><small>Kupaonice</small><strong>Uređena kupaonica</strong></span>
+              <span class="shot__zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+            </button>
+          </li>
+          <li class="shot reveal" style="--d:1">
+            <button class="shot__btn" type="button" data-full="img/radovi/kupaonica-u-izvedbi-1600.webp" data-title="Kupaonica u izvedbi" data-desc="Ugrađena tuš kada i podžbukni vodokotlić, a priključci za armature spremni su za završnu montažu.">
+              <img src="img/radovi/kupaonica-u-izvedbi-640.webp" srcset="img/radovi/kupaonica-u-izvedbi-640.webp 640w, img/radovi/kupaonica-u-izvedbi-1600.webp 1200w" sizes="(min-width: 1000px) 25vw, 50vw" width="640" height="853" alt="Kupaonica u izvedbi s ugrađenom tuš kadom, podžbuknim vodokotlićem i pripremljenim priključcima" loading="lazy" decoding="async">
+              <span class="shot__cap"><small>Kupaonice</small><strong>Kupaonica u izvedbi</strong></span>
+              <span class="shot__zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+            </button>
+          </li>
+          <li class="shot reveal" style="--d:2">
+            <button class="shot__btn" type="button" data-full="img/radovi/filter-regulator-tlaka-1600.webp" data-title="Filter i regulator tlaka" data-desc="Novi razvod uz vodomjere s mehaničkim filtrom, regulatorom tlaka, ekspanzijskom posudom i zapornim ventilima.">
+              <img src="img/radovi/filter-regulator-tlaka-640.webp" srcset="img/radovi/filter-regulator-tlaka-640.webp 640w, img/radovi/filter-regulator-tlaka-1600.webp 1200w" sizes="(min-width: 1000px) 25vw, 50vw" width="640" height="853" alt="Vodovodni razvod s vodomjerima, mehaničkim filtrom, regulatorom tlaka i ekspanzijskom posudom" loading="lazy" decoding="async">
+              <span class="shot__cap"><small>Vodovod</small><strong>Filter i regulator tlaka</strong></span>
+              <span class="shot__zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+            </button>
+          </li>
+          <li class="shot reveal" style="--d:3">
+            <button class="shot__btn" type="button" data-full="img/radovi/omeksivac-vode-bosch-1600.webp" data-title="Omekšivač vode" data-desc="Ugradnja omekšivača vode s dvostrukim predfiltrom na novi razvod od PPR cijevi.">
+              <img src="img/radovi/omeksivac-vode-bosch-640.webp" srcset="img/radovi/omeksivac-vode-bosch-640.webp 640w, img/radovi/omeksivac-vode-bosch-1600.webp 1200w" sizes="(min-width: 1000px) 25vw, 50vw" width="640" height="853" alt="Omekšivač vode ugrađen na PPR razvod s dvostrukim predfiltrom" loading="lazy" decoding="async">
+              <span class="shot__cap"><small>Priprema vode</small><strong>Omekšivač vode</strong></span>
+              <span class="shot__zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+            </button>
+          </li>
+          <li class="shot reveal" style="--d:4">
+            <button class="shot__btn" type="button" data-full="img/radovi/reverzna-osmoza-1600.webp" data-title="Reverzna osmoza" data-desc="Uređaj za pročišćavanje vode reverznom osmozom s manometrima i mjeračem vodljivosti.">
+              <img src="img/radovi/reverzna-osmoza-640.webp" srcset="img/radovi/reverzna-osmoza-640.webp 640w, img/radovi/reverzna-osmoza-1600.webp 1200w" sizes="(min-width: 1000px) 25vw, 50vw" width="640" height="853" alt="Uređaj za pročišćavanje vode reverznom osmozom s mjeračem vodljivosti" loading="lazy" decoding="async">
+              <span class="shot__cap"><small>Priprema vode</small><strong>Reverzna osmoza</strong></span>
+              <span class="shot__zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+            </button>
+          </li>
+          <li class="shot reveal" style="--d:5">
+            <button class="shot__btn" type="button" data-full="img/radovi/omeksivac-poslovni-prostor-1600.webp" data-title="Omekšivač u poslovnom prostoru" data-desc="Omekšivač vode s izoliranim razvodom i zapornim ventilima u poslovnom prostoru.">
+              <img src="img/radovi/omeksivac-poslovni-prostor-640.webp" srcset="img/radovi/omeksivac-poslovni-prostor-640.webp 640w, img/radovi/omeksivac-poslovni-prostor-1600.webp 1200w" sizes="(min-width: 1000px) 25vw, 50vw" width="640" height="853" alt="Omekšivač vode s izoliranim cijevima i zapornim ventilima u poslovnom prostoru" loading="lazy" decoding="async">
+              <span class="shot__cap"><small>Priprema vode</small><strong>Omekšivač u poslovnom prostoru</strong></span>
+              <span class="shot__zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+            </button>
+          </li>
+          <li class="shot shot--wide reveal" style="--d:6">
+            <button class="shot__btn" type="button" data-full="img/radovi/klima-uredaj-1600.webp" data-title="Ugradnja klima uređaja" data-desc="Ugradnja zidne unutarnje jedinice klima uređaja.">
+              <img src="img/radovi/klima-uredaj-640.webp" srcset="img/radovi/klima-uredaj-640.webp 1200w, img/radovi/klima-uredaj-1600.webp 1600w" sizes="(min-width: 1000px) 50vw, 100vw" width="1200" height="900" alt="Zidna unutarnja jedinica klima uređaja ugrađena ispod stropa" loading="lazy" decoding="async">
+              <span class="shot__cap"><small>Klimatizacija</small><strong>Ugradnja klima uređaja</strong></span>
+              <span class="shot__zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <svg class="works__wave works__wave--bottom" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c120-30 240-40 360-24s240 50 360 50 240-40 360-46 240 18 360 34v36H0z"/></svg>
+    </section>
+
     <!-- HITNO -->
     <section class="urgent section" id="hitno">
       <div class="container">
@@ -583,6 +655,7 @@
           <a href="#usluge">Usluge</a>
           <a href="#kako-radimo">Kako radimo</a>
           <a href="#zasto-mi">Zašto mi</a>
+          <a href="#radovi">Radovi</a>
           <a href="#hitno">Hitno?</a>
           <a href="#kontakt">Kontakt</a>
         </nav>
@@ -614,6 +687,21 @@
   <div class="dock" aria-label="Brzi kontakt">
     <a href="tel:+385992996301" class="dock__call"><svg><use href="#i-phone"/></svg><span>Nazovite</span></a>
     <a href="sms:+385992996301" class="dock__msg"><svg><use href="#i-msg"/></svg><span>Poruka</span></a>
+  </div>
+
+  <!-- Pregled fotografija -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Fotografija izvedenog rada" hidden>
+    <button class="lightbox__close" type="button" aria-label="Zatvori"><svg><use href="#i-close"/></svg></button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Prethodna fotografija"><svg><use href="#i-chev-left"/></svg></button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" alt="">
+      <figcaption class="lightbox__cap">
+        <span class="lightbox__count"></span>
+        <strong class="lightbox__title"></strong>
+        <span class="lightbox__desc"></span>
+      </figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Sljedeća fotografija"><svg><use href="#i-chev-right"/></svg></button>
   </div>
 
   <div class="toast" role="status" aria-live="polite"></div>

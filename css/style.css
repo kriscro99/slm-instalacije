@@ -1152,3 +1152,103 @@ em { font-style: normal; }
 .footer__contact .footer__contact-sub { margin-top: 16px; }
 .footer__contact a.footer__mail { font-family: var(--f-body); font-size: 17px; font-weight: 700; color: #fff; overflow-wrap: anywhere; transition: color .3s ease; }
 .footer__contact a.footer__mail:hover { color: var(--aqua-300); }
+
+/* =========================================================
+   NAŠI RADOVI
+   ========================================================= */
+.works { color: #fff; background: var(--navy-900); overflow: hidden; padding: clamp(110px, 14vw, 180px) 0 clamp(120px, 14vw, 190px); }
+.works__bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(45% 40% at 8% 10%, rgba(22, 119, 214, .38), transparent 70%),
+    radial-gradient(40% 40% at 100% 95%, rgba(60, 198, 255, .14), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px) 0 0 / 44px 44px,
+    linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px) 0 0 / 44px 44px;
+}
+.works__wave { position: absolute; left: 0; right: 0; width: 100%; height: 60px; fill: var(--paper); z-index: 1; pointer-events: none; }
+.works__wave--top { top: -1px; transform: scaleY(-1); }
+.works__wave--bottom { bottom: -1px; }
+.works .container { position: relative; z-index: 2; }
+
+.works__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 700px) { .works__grid { gap: 14px; } }
+@media (min-width: 1000px) { .works__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; } }
+
+.shot { position: relative; aspect-ratio: 3 / 4; border-radius: 18px; }
+.shot--wide { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+@media (min-width: 1000px) { .shot--wide { grid-column: span 2; aspect-ratio: auto; } }
+.shot__btn { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border-radius: inherit; overflow: hidden; cursor: zoom-in; text-align: left; background: var(--navy-800); }
+.shot__btn::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 50%, rgba(3, 21, 43, .88) 100%);
+}
+.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+.shot__cap { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 1; display: grid; gap: 3px; }
+.shot__cap small { font-size: 10.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--aqua-300); }
+.shot__cap strong { font-family: var(--f-display); font-weight: 700; font-size: clamp(13.5px, 3.5vw, 17px); line-height: 1.2; color: #fff; }
+.shot__zoom {
+  position: absolute; top: 10px; right: 10px; z-index: 1;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff;
+  background: rgba(4, 27, 53, .35); border: 1px solid rgba(255, 255, 255, .3);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: background .3s ease, color .3s ease, transform .5s var(--ease-back);
+}
+.shot__zoom svg { width: 17px; height: 17px; }
+
+/* otkrivanje: slika se "izlije" odozdo (clip-path je na gumbu, ne na promatranom elementu,
+   jer IntersectionObserver ne vidi potpuno odrezan element) */
+.js .shot.reveal { opacity: 1; transform: none; }
+.js .shot.reveal .shot__btn { clip-path: inset(100% 0 0 0 round 18px); transition: clip-path 1.3s var(--ease-out); transition-delay: calc(var(--d, 0) * 90ms); }
+.js .shot.reveal.is-in .shot__btn { clip-path: inset(0 0 0 0 round 18px); }
+.js .shot.reveal img { transform: scale(1.25); }
+.js .shot.reveal.is-in img { transform: scale(1); transition: transform 1.8s var(--ease-out) calc(var(--d, 0) * 90ms); }
+@media (hover: hover) {
+  .js .shot.reveal.is-in .shot__btn:hover img, .shot__btn:hover img { transform: scale(1.07); transition-delay: 0s; transition-duration: 1.2s; }
+  .shot__btn:hover .shot__zoom { background: var(--aqua-400); color: var(--navy-900); transform: scale(1.1); }
+}
+.urgent { padding-top: clamp(60px, 8vw, 100px); }
+
+/* ---------- Pregled fotografija (lightbox) ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 260;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  padding: calc(var(--safe-t) + 70px) 16px calc(var(--safe-b) + 20px);
+  background: rgba(3, 12, 26, .95);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  opacity: 0; transition: opacity .35s ease;
+}
+.lightbox[hidden] { display: none; }
+.lightbox.is-open { opacity: 1; }
+.lightbox__figure { margin: 0; height: 100%; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+.lightbox__img {
+  display: block; min-height: 0; max-width: 100%; max-height: calc(100% - 96px);
+  object-fit: contain; border-radius: 14px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8);
+  opacity: 0; transform: scale(.97);
+  transition: opacity .35s ease, transform .6s var(--ease-out);
+}
+.lightbox.is-loaded .lightbox__img { opacity: 1; transform: none; }
+.lightbox__cap { display: grid; gap: 4px; max-width: 600px; text-align: center; color: #fff; }
+.lightbox__count { font-size: 12px; font-weight: 800; letter-spacing: .18em; color: var(--aqua-300); }
+.lightbox__title { font-family: var(--f-display); font-weight: 700; font-size: clamp(17px, 4.4vw, 22px); line-height: 1.2; }
+.lightbox__desc { font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, .72); }
+.lightbox__close, .lightbox__nav {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff;
+  background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .18);
+  transition: background .3s ease, color .3s ease;
+}
+.lightbox__close svg, .lightbox__nav svg { width: 22px; height: 22px; }
+.lightbox__close { position: absolute; top: calc(var(--safe-t) + 14px); right: 16px; }
+@media (hover: hover) { .lightbox__close:hover, .lightbox__nav:hover { background: var(--aqua-400); color: var(--navy-900); } }
+@media (max-width: 699px) {
+  .lightbox { grid-template-columns: minmax(0, 1fr); padding-left: 12px; padding-right: 12px; }
+  .lightbox__figure { padding-bottom: 64px; }
+  .lightbox__nav { position: absolute; bottom: calc(var(--safe-b) + 16px); }
+  .lightbox__nav--prev { left: 16px; }
+  .lightbox__nav--next { right: 16px; }
+}
+
+/* uži desktop: 6 poveznica u zaglavlju */
+@media (min-width: 1040px) and (max-width: 1199px) { .nav a { padding: 10px 9px; font-size: 14.5px; } .nav a::after { left: 9px; right: 9px; } }

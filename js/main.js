@@ -324,6 +324,79 @@
     });
   }
 
+  /* ---------- Naši radovi: pregled fotografija ---------- */
+  const shots = $$('.shot__btn');
+  const lightbox = $('.lightbox');
+  if (lightbox && shots.length) {
+    const lbImg = $('.lightbox__img', lightbox);
+    const lbTitle = $('.lightbox__title', lightbox);
+    const lbDesc = $('.lightbox__desc', lightbox);
+    const lbCount = $('.lightbox__count', lightbox);
+    const lbClose = $('.lightbox__close', lightbox);
+    let current = 0;
+    let lastFocus = null;
+
+    const show = (i) => {
+      current = (i + shots.length) % shots.length;
+      const shot = shots[current];
+      lightbox.classList.remove('is-loaded');
+      lbImg.onload = () => lightbox.classList.add('is-loaded');
+      lbImg.src = shot.dataset.full;
+      lbImg.alt = shot.querySelector('img').alt;
+      lbTitle.textContent = shot.dataset.title;
+      lbDesc.textContent = shot.dataset.desc;
+      lbCount.textContent = `${current + 1} / ${shots.length}`;
+      if (lbImg.complete && lbImg.naturalWidth) lightbox.classList.add('is-loaded');
+      // unaprijed učitaj susjedne fotografije
+      [1, -1].forEach((d) => { new Image().src = shots[(current + d + shots.length) % shots.length].dataset.full; });
+    };
+    const open = (i) => {
+      lastFocus = document.activeElement;
+      show(i);
+      lightbox.hidden = false;
+      root.classList.add('html-lock');
+      requestAnimationFrame(() => lightbox.classList.add('is-open'));
+      lbClose.focus({ preventScroll: true });
+    };
+    const close = () => {
+      lightbox.classList.remove('is-open');
+      root.classList.remove('html-lock');
+      setTimeout(() => { lightbox.hidden = true; lbImg.removeAttribute('src'); }, 350);
+      if (lastFocus) lastFocus.focus({ preventScroll: true });
+    };
+
+    shots.forEach((shot, i) => shot.addEventListener('click', () => open(i)));
+    lbClose.addEventListener('click', close);
+    $('.lightbox__nav--prev', lightbox).addEventListener('click', () => show(current - 1));
+    $('.lightbox__nav--next', lightbox).addEventListener('click', () => show(current + 1));
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox__figure')) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(current - 1);
+      else if (e.key === 'ArrowRight') show(current + 1);
+      else if (e.key === 'Tab') {
+        // fokus ostaje unutar pregleda
+        const focusables = $$('button', lightbox);
+        const first = focusables[0], last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // povlačenje prstom: lijevo/desno lista, prema dolje zatvara
+    let sx = 0, sy = 0;
+    lightbox.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - sx;
+      const dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(current + (dx < 0 ? 1 : -1));
+      else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) close();
+    }, { passive: true });
+  }
+
   /* ---------- Godina ---------- */
   const year = $('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
